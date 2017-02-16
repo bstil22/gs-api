@@ -13,5 +13,8 @@
 !/log/.keep
 !/tmp/.keep
 
+#Ignore RubyMine
+.idea/*
+
 # Ignore Byebug command history file.
 .byebug_history
