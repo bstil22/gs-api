@@ -1,10 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe Api::WeaponsController, type: :controller do
-  it 'does not blow up' do
-    get 'index'
+  describe 'index' do
+    it 'returns a 200' do
+      get :index
 
-    expect(response).to be_success
-    expect(response['Content-Type']).to match('application/json')
+      expect(response).to be_success
+      expect(response['Content-Type']).to match('application/json')
+    end
+  end
+
+  describe 'create' do
+    before {post :create, params: {name: 'M4 Carbine', manufacturer: 'Colt'}}
+
+    it 'returns a 201 Created' do
+      expect(response.status).to be(201)
+    end
+
+    it 'creates a Weapon' do
+      expect{post :create, params: {name: 'M4 Carbine', manufacturer: 'Colt'}}.to change(Weapon, :count).by(1)
+    end
+
+    it 'returns the record in JSON form' do
+      expect(json['name']).to eq('M4 Carbine')
+      expect(json['manufacturer']).to eq('Colt')
+    end
   end
 end
