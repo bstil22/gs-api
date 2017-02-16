@@ -11,18 +11,18 @@ RSpec.describe Api::WeaponsController, type: :controller do
   end
 
   describe 'create' do
-    before {post :create, params: {name: 'M4 Carbine', manufacturer: 'Colt'}}
+    before {post :create, params: {model: 'M4 Carbine', manufacturer: 'Colt'}}
 
     it 'returns a 201 Created' do
       expect(response.status).to be(201)
     end
 
     it 'creates a Weapon' do
-      expect{post :create, params: {name: 'M4 Carbine', manufacturer: 'Colt'}}.to change(Weapon, :count).by(1)
+      expect{post :create, params: {model: 'M4 Carbine', manufacturer: 'Colt'}}.to change(Weapon, :count).by(1)
     end
 
     it 'returns the record in JSON form' do
-      expect(json['name']).to eq('M4 Carbine')
+      expect(json['model']).to eq('M4 Carbine')
       expect(json['manufacturer']).to eq('Colt')
     end
   end
