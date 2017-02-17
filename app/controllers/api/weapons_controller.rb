@@ -12,7 +12,7 @@ class Api::WeaponsController < ApplicationController
   private
 
   def weapon_params
-    params.permit(:name, :manufacturer)
+    params.permit(:model, :manufacturer)
   end
 
 end
