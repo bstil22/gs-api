@@ -1,6 +1,8 @@
 class Api::WeaponsController < ApplicationController
   def index
-    render status: 200, json: {guns: ['AR-PISTOL', '1911', 'SKS']}
+    @weapons = Weapon.all
+
+    json_response(@weapons, :ok)
   end
 
   def create
