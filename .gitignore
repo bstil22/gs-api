@@ -16,5 +16,11 @@
 #Ignore RubyMine
 .idea/*
 
+# simplecov
+coverage
+
+.DS_STORE
+
+
 # Ignore Byebug command history file.
 .byebug_history
