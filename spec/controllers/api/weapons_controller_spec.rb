@@ -42,4 +42,39 @@ RSpec.describe Api::WeaponsController, type: :controller do
       expect(json['manufacturer']).to eq('Grease')
     end
   end
+
+  describe 'show' do
+    before(:each) do
+      weapon = Weapon.create!(model: 'm16', manufacturer: 'Iran')
+      get :show, params: {id: weapon.id}
+    end
+
+    it 'returns a 200' do
+      expect(response.status).to be(200)
+    end
+
+    it 'returns the updated record in JSON form' do
+      expect(json['model']).to eq('m16')
+      expect(json['manufacturer']).to eq('Iran')
+    end
+  end
+
+  describe 'destroy' do
+    it 'returns a 200' do
+      weapon = Weapon.create!(model: 'Going Away', manufacturer: 'Forever')
+      delete :destroy, params: {id: weapon.id}
+      expect(response.status).to be(200)
+    end
+
+    it 'removes the weapon' do
+      weapon = Weapon.create!(model: 'Going Away', manufacturer: 'Forever')
+      expect{delete :destroy, params: {id: weapon.id}}.to change(Weapon, :count).by(-1)
+    end
+
+    it 'responds with JSON' do
+      weapon = Weapon.create!(model: 'Going Away', manufacturer: 'Forever')
+      delete :destroy, params: {id: weapon.id}
+      expect(json['message']).to eq('Item Deleted Successfully.')
+    end
+  end
 end
