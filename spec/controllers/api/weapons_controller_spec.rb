@@ -26,4 +26,20 @@ RSpec.describe Api::WeaponsController, type: :controller do
       expect(json['manufacturer']).to eq('Colt')
     end
   end
+
+  describe 'update' do
+    before(:each) do
+      weapon = Weapon.create!(model: 'Foo Gun', manufacturer: 'good guys')
+      put :update, params: {id: weapon.id, model: 'AK-47', manufacturer: 'Grease'}
+    end
+
+    it 'returns a 200' do
+      expect(response.status).to be(200)
+    end
+
+    it 'returns the updated record in JSON form' do
+      expect(json['model']).to eq('AK-47')
+      expect(json['manufacturer']).to eq('Grease')
+    end
+  end
 end

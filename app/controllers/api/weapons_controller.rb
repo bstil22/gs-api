@@ -11,10 +11,15 @@ class Api::WeaponsController < ApplicationController
     json_response(@weapon, :created)
   end
 
-  private
+  def update
+    @weapon = Weapon.find(params[:id])
+    @weapon.update!(weapon_params)
 
-  def weapon_params
-    params.permit(:model, :manufacturer)
+    json_response(@weapon)
   end
 
+  private
+  def weapon_params
+    params.permit(:model, :manufacturer, :id)
+  end
 end
