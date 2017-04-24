@@ -21,6 +21,7 @@ gem 'puma', '~> 3.0'
 
 group :test do
   gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+  gem 'simplecov', '~> 0.12.0'
 end
 
 # Use Capistrano for deployment
