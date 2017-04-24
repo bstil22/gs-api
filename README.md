@@ -1,24 +1,19 @@
-# README
+## SETUP
+requires ruby > 2.2.0
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+make sure you have postgres installed
 
-Things you may want to cover:
+$```gem install bundler```
 
-* Ruby version
+$```bundle install```
 
-* System dependencies
+$```rails db:create db:migrate```
 
-* Configuration
+## Specs
+All feature work needs to be tested.
 
-* Database creation
+To run test suite: ```rspec .```
 
-* Database initialization
+## ```rails s``` to start the server
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![alt text](https://media.giphy.com/media/gmb4vk8V1xImk/giphy.gif)
