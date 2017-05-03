@@ -17,8 +17,9 @@ gem 'puma', '~> 3.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
+gem 'knock'
 group :test do
   gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
   gem 'simplecov', '~> 0.12.0'
