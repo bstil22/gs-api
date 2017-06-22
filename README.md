@@ -1,4 +1,4 @@
-## SETUP
+## Setup
 requires ruby > 2.2.0
 
 make sure you have postgres installed
